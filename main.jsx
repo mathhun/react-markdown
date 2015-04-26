@@ -1,13 +1,23 @@
-var Hello = React.createClass({
+var App = React.createClass({
+    getInitialState: function() {
+        return { message: "" };
+    },
+
+    updateMessage: function(e) {
+        this.setState({ message: e.target.value });
+    },
+
     render: function() {
         return (
-            <div><h1>Hello, React</h1>
+            <div>
+              <input type="text" onChange={this.updateMessage} />
+              <p>{this.state.message}</p>
             </div>
         );
     }
 });
 
 React.render(
-    <Hello />,
+    <App />,
     document.getElementById('app-container')
 );
