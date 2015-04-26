@@ -3,17 +3,27 @@ var App = React.createClass({
         return { message: "" };
     },
 
-    updateMessage: function(e) {
-        this.setState({ message: e.target.value });
+    updateMessage: function(message) {
+        this.setState({ message: message });
     },
 
     render: function() {
         return (
             <div>
-              <input type="text" onChange={this.updateMessage} />
+              <MessageInput onChange={this.updateMessage} />
               <Message message={this.state.message} />
             </div>
         );
+    }
+});
+
+var MessageInput = React.createClass({
+    _onChange: function(e) {
+        this.props.onChange(e.target.value);
+    },
+
+    render: function() {
+        return <input type="text" onChange={this._onChange} />;
     }
 });
 
