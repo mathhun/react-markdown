@@ -48,9 +48,10 @@ var MessageInput = React.createClass({
 
 var Message = React.createClass({
     render: function() {
+        var key = 0;
         var messages = this.props.savedMessages.map(
             function(message) {
-                return <li>{message}</li>;
+                return <li key={key++}>{message}</li>;
             }
         );
 
